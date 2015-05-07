@@ -13,6 +13,14 @@
 		B9F2602F1AFB2EAC00338F3F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9F2602E1AFB2EAC00338F3F /* Images.xcassets */; };
 		B9F260321AFB2EAC00338F3F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9F260301AFB2EAC00338F3F /* LaunchScreen.xib */; };
 		B9F2603E1AFB2EAC00338F3F /* GithubUserSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F2603D1AFB2EAC00338F3F /* GithubUserSearchTests.swift */; };
+		B9F260481AFB2ED100338F3F /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = B9F260471AFB2ED100338F3F /* Cartfile */; };
+		B9F2604C1AFB305F00338F3F /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F260491AFB305F00338F3F /* ReactiveCocoa.framework */; };
+		B9F2604D1AFB305F00338F3F /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9F260491AFB305F00338F3F /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B9F2604E1AFB305F00338F3F /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F2604A1AFB305F00338F3F /* Result.framework */; };
+		B9F2604F1AFB305F00338F3F /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9F2604A1AFB305F00338F3F /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B9F260501AFB305F00338F3F /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F2604B1AFB305F00338F3F /* Box.framework */; };
+		B9F260511AFB305F00338F3F /* Box.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9F2604B1AFB305F00338F3F /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B9F260581AFB389C00338F3F /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F260571AFB389C00338F3F /* UserCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +33,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B9F260521AFB306000338F3F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B9F2604D1AFB305F00338F3F /* ReactiveCocoa.framework in Embed Frameworks */,
+				B9F260511AFB305F00338F3F /* Box.framework in Embed Frameworks */,
+				B9F2604F1AFB305F00338F3F /* Result.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B9F260221AFB2EAC00338F3F /* GithubUserSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubUserSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F260261AFB2EAC00338F3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -36,6 +60,11 @@
 		B9F260371AFB2EAC00338F3F /* GithubUserSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubUserSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F2603C1AFB2EAC00338F3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9F2603D1AFB2EAC00338F3F /* GithubUserSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUserSearchTests.swift; sourceTree = "<group>"; };
+		B9F260471AFB2ED100338F3F /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		B9F260491AFB305F00338F3F /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		B9F2604A1AFB305F00338F3F /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		B9F2604B1AFB305F00338F3F /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
+		B9F260571AFB389C00338F3F /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +72,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9F2604C1AFB305F00338F3F /* ReactiveCocoa.framework in Frameworks */,
+				B9F260501AFB305F00338F3F /* Box.framework in Frameworks */,
+				B9F2604E1AFB305F00338F3F /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +91,10 @@
 		B9F260191AFB2EAC00338F3F = {
 			isa = PBXGroup;
 			children = (
+				B9F260491AFB305F00338F3F /* ReactiveCocoa.framework */,
+				B9F2604A1AFB305F00338F3F /* Result.framework */,
+				B9F2604B1AFB305F00338F3F /* Box.framework */,
+				B9F260471AFB2ED100338F3F /* Cartfile */,
 				B9F260241AFB2EAC00338F3F /* GithubUserSearch */,
 				B9F2603A1AFB2EAC00338F3F /* GithubUserSearchTests */,
 				B9F260231AFB2EAC00338F3F /* Products */,
@@ -77,6 +113,7 @@
 		B9F260241AFB2EAC00338F3F /* GithubUserSearch */ = {
 			isa = PBXGroup;
 			children = (
+				B9F260561AFB388D00338F3F /* View */,
 				B9F260271AFB2EAC00338F3F /* AppDelegate.swift */,
 				B9F260291AFB2EAC00338F3F /* ViewController.swift */,
 				B9F2602B1AFB2EAC00338F3F /* Main.storyboard */,
@@ -112,6 +149,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B9F260561AFB388D00338F3F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B9F260571AFB389C00338F3F /* UserCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,6 +167,7 @@
 				B9F2601E1AFB2EAC00338F3F /* Sources */,
 				B9F2601F1AFB2EAC00338F3F /* Frameworks */,
 				B9F260201AFB2EAC00338F3F /* Resources */,
+				B9F260521AFB306000338F3F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -194,6 +240,7 @@
 			files = (
 				B9F2602D1AFB2EAC00338F3F /* Main.storyboard in Resources */,
 				B9F260321AFB2EAC00338F3F /* LaunchScreen.xib in Resources */,
+				B9F260481AFB2ED100338F3F /* Cartfile in Resources */,
 				B9F2602F1AFB2EAC00338F3F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9F260581AFB389C00338F3F /* UserCell.swift in Sources */,
 				B9F2602A1AFB2EAC00338F3F /* ViewController.swift in Sources */,
 				B9F260281AFB2EAC00338F3F /* AppDelegate.swift in Sources */,
 			);
@@ -342,6 +390,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GithubUserSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -352,6 +404,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GithubUserSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
