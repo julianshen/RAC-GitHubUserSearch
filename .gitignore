@@ -32,5 +32,3 @@ DerivedData
 
 Carthage/Build
 
-#Ignore imported framework
-*.framework
