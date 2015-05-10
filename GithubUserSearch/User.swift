@@ -8,7 +8,12 @@
 
 import Foundation
 
-struct User {
+class User {
     let login:String
     let avatar_url:String
+    
+    init(user: String, avatar: String) {
+        login = user
+        avatar_url = avatar
+    }
 }

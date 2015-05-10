@@ -9,15 +9,44 @@
 import UIKit
 import ReactiveCocoa
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    static let REUSE_ID = "user_cell"
     let viewModel: UserSearchViewModel = UserSearchViewModel()
+    
     @IBOutlet weak var keywordInput: UITextField!
+    @IBOutlet weak var userListView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //userListView.registerClass(UserCell.self, forCellReuseIdentifier: ViewController.RESTORE_ID)
+        
         viewModel.prop_keyword <~ keywordInput.rac_textSignal().toSignalProducer() |> catch {
             error in
             return SignalProducer<AnyObject?, NoError>(value:"")
+        }
+        
+        let filteredKeywordSignalProducer = viewModel.prop_keyword.producer
+        |> filter {
+            return count($0 as! String) >= 3
+        }
+        
+        let throttledKeywordSignal = filteredKeywordSignalProducer |> throttle(1, onScheduler: QueueScheduler())
+        
+        throttledKeywordSignal |> map {
+            value in
+            return GitHubClient.searchUser(value as! String)
+        }
+        |> flatten(FlattenStrategy.Concat)
+        |> start {
+            value in
+            self.viewModel.users = value
+        }
+        
+        viewModel.prop_users.producer |> start {
+            value in
+            self.userListView.reloadData()
+            return
         }
     }
 
@@ -30,14 +59,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if let count:Int = self.viewModel.users?.count {
             return count
         }
-        
         return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("user") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(ViewController.REUSE_ID) as! UserCell
+        
+        if let user = viewModel.users?[indexPath.item] {
+            cell.userNameLabel.text = user.login
+            let url = NSURL(string: user.avatar_url)
+            
+            signalForImage(url!)
+            |> startOn(QueueScheduler())
+            |> observeOn(UIScheduler())
+            |> start
+            {
+                value in
+                cell.imageView?.image = value
+                return
+            }
+        }
         
         return cell
+    }
+    
+    func signalForImage(url: NSURL) -> SignalProducer<UIImage, NoError> {
+        return SignalProducer<UIImage, NoError> {
+            observer, disposable in
+            let imgData = NSData(contentsOfURL: url)
+            sendNext(observer, UIImage(data: imgData!)!)
+            sendCompleted(observer)
+            return
+        }
     }
 }
 

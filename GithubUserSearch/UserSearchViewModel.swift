@@ -12,7 +12,9 @@ import ReactiveCocoa
 class UserSearchViewModel: NSObject {
     private dynamic var searchKeyword: String?
     
-    lazy var prop_keyword:DynamicProperty = DynamicProperty(object: self, keyPath: "searchKeyword")
-    var users:[User]?
+    lazy var prop_keyword: DynamicProperty = DynamicProperty(object: self, keyPath: "searchKeyword")
+    dynamic var users:[User]?
+    
+    lazy var prop_users: DynamicProperty = DynamicProperty(object: self, keyPath: "users")
     
 }
