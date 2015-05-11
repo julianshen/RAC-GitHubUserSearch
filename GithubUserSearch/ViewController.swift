@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var keywordInput: UITextField!
     @IBOutlet weak var userListView: UITableView!
+    lazy var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,17 +31,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return count($0 as! String) >= 3
         }
         
-        let throttledKeywordSignal = filteredKeywordSignalProducer |> throttle(0.5, onScheduler: QueueScheduler())
+        let throttledKeywordSignalProducer = filteredKeywordSignalProducer |> throttle(0.5, onScheduler: QueueScheduler())
+        throttledKeywordSignalProducer.startWithSignal({
+            signal, disposable in
+            signal |> observe(next: {
+                value in
+                    self.keywordInput.rightView = self.loadingIndicator
+                    self.keywordInput.rightViewMode = .Always
+                    self.loadingIndicator.startAnimating()
+                return
+            })
+        })
         
-        throttledKeywordSignal |> map {
-            value in
-            return GitHubClient.searchUser(value as! String)
+        throttledKeywordSignalProducer |> map {
+            GitHubClient.searchUser($0 as! String)
         }
         |> flatten(FlattenStrategy.Concat)
         |> startOn(QueueScheduler())
         |> observeOn(UIScheduler())
         |> start {
             value in
+            self.loadingIndicator.stopAnimating()
+            self.keywordInput.rightViewMode = .Never
             self.viewModel.users = value
         }
         
