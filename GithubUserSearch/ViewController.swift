@@ -47,8 +47,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             GitHubClient.searchUser($0 as! String)
         }
         |> flatten(FlattenStrategy.Concat)
-        |> startOn(QueueScheduler())
-        |> observeOn(UIScheduler())
         |> start {
             value in
             self.loadingIndicator.stopAnimating()
