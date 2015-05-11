@@ -37,6 +37,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return GitHubClient.searchUser(value as! String)
         }
         |> flatten(FlattenStrategy.Concat)
+        |> startOn(QueueScheduler())
+        |> observeOn(UIScheduler())
         |> start {
             value in
             self.viewModel.users = value

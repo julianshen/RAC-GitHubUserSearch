@@ -17,13 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="User name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5Y-dX-8Yn">
-                                <rect key="frame" x="16" y="32" width="96" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xJ4-CK-QvJ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xJ4-CK-QvJ">
                                 <rect key="frame" x="120" y="28" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -67,11 +61,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xJ4-CK-QvJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8uQ-JF-4ZY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oLN-4n-Cxd" secondAttribute="trailing" id="FQw-hB-uuS"/>
-                            <constraint firstItem="E5Y-dX-8Yn" firstAttribute="centerY" secondItem="xJ4-CK-QvJ" secondAttribute="centerY" id="KUA-u0-Yjo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xJ4-CK-QvJ" secondAttribute="trailing" id="MTu-Na-Vvv"/>
                             <constraint firstItem="oLN-4n-Cxd" firstAttribute="top" secondItem="xJ4-CK-QvJ" secondAttribute="bottom" constant="12" id="aiT-7O-sZV"/>
-                            <constraint firstItem="xJ4-CK-QvJ" firstAttribute="leading" secondItem="E5Y-dX-8Yn" secondAttribute="trailing" constant="4" id="qQw-vO-e0v"/>
                             <constraint firstItem="oLN-4n-Cxd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rcc-UL-Yot"/>
                         </constraints>
                     </view>
