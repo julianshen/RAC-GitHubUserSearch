@@ -20,8 +20,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //userListView.registerClass(UserCell.self, forCellReuseIdentifier: ViewController.RESTORE_ID)
-        
         viewModel.prop_keyword <~ keywordInput.rac_textSignal().toSignalProducer() |> catch {
             error in
             return SignalProducer<AnyObject?, NoError>(value:"")
