@@ -12,6 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     static let REUSE_ID = "user_cell"
     let viewModel: UserSearchViewModel = UserSearchViewModel()
+    lazy var defaultProfileImage = UIImage(named: "smiley")
     
     @IBOutlet weak var keywordInput: UITextField!
     @IBOutlet weak var userListView: UITableView!
@@ -65,6 +66,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(ViewController.REUSE_ID) as! UserCell
         
+        cell.imageView?.image = defaultProfileImage
         if let user = viewModel.users?[indexPath.item] {
             cell.userNameLabel.text = user.login
             let url = NSURL(string: user.avatar_url)
@@ -86,8 +88,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func signalForImage(url: NSURL) -> SignalProducer<UIImage, NoError> {
         return SignalProducer<UIImage, NoError> {
             observer, disposable in
-            let imgData = NSData(contentsOfURL: url)
-            sendNext(observer, UIImage(data: imgData!)!)
+            if let imgData = NSData(contentsOfURL: url) {
+                sendNext(observer, UIImage(data: imgData)!)
+            }
             sendCompleted(observer)
             return
         }
