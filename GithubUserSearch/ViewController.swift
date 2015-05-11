@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return count($0 as! String) >= 3
         }
         
-        let throttledKeywordSignal = filteredKeywordSignalProducer |> throttle(1, onScheduler: QueueScheduler())
+        let throttledKeywordSignal = filteredKeywordSignalProducer |> throttle(0.5, onScheduler: QueueScheduler())
         
         throttledKeywordSignal |> map {
             value in
@@ -68,10 +68,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.imageView?.image = defaultProfileImage
         if let user = viewModel.users?[indexPath.item] {
+            if let disposable = cell.imageLoading {
+                disposable.dispose()
+            }
+            
             cell.userNameLabel.text = user.login
             let url = NSURL(string: user.avatar_url)
             
-            signalForImage(url!)
+            cell.imageLoading = signalForImage(url!)
             |> startOn(QueueScheduler())
             |> observeOn(UIScheduler())
             |> start
