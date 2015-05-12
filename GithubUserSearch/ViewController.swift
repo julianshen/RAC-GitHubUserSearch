@@ -22,7 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         
         viewModel.prop_keyword <~ keywordInput.rac_textSignal().toSignalProducer() |> catch {
-            error in
+            _ in
             return SignalProducer<AnyObject?, NoError>(value:"")
         }
         
@@ -33,11 +33,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let throttledKeywordSignalProducer = filteredKeywordSignalProducer |> throttle(0.5, onScheduler: QueueScheduler())
         throttledKeywordSignalProducer.start {
-            value in
-                self.keywordInput.rightView = self.loadingIndicator
-                self.keywordInput.rightViewMode = .Always
-                self.loadingIndicator.startAnimating()
-            return
+            _ in
+            self.keywordInput.rightView = self.loadingIndicator
+            self.keywordInput.rightViewMode = .Always
+            self.loadingIndicator.startAnimating()
         }
         
         throttledKeywordSignalProducer |> map {
@@ -45,16 +44,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         |> flatten(FlattenStrategy.Concat)
         |> start {
-            value in
             self.loadingIndicator.stopAnimating()
             self.keywordInput.rightViewMode = .Never
-            self.viewModel.users = value
+            self.viewModel.users = $0
         }
         
         viewModel.prop_users.producer |> start {
-            value in
+            _ in
             self.userListView.reloadData()
-            return
         }
     }
 
