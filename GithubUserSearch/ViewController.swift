@@ -32,16 +32,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         let throttledKeywordSignalProducer = filteredKeywordSignalProducer |> throttle(0.5, onScheduler: QueueScheduler())
-        throttledKeywordSignalProducer.startWithSignal({
-            signal, disposable in
-            signal |> observe(next: {
-                value in
-                    self.keywordInput.rightView = self.loadingIndicator
-                    self.keywordInput.rightViewMode = .Always
-                    self.loadingIndicator.startAnimating()
-                return
-            })
-        })
+        throttledKeywordSignalProducer.start {
+            value in
+                self.keywordInput.rightView = self.loadingIndicator
+                self.keywordInput.rightViewMode = .Always
+                self.loadingIndicator.startAnimating()
+            return
+        }
         
         throttledKeywordSignalProducer |> map {
             GitHubClient.searchUser($0 as! String)
