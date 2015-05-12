@@ -1,4 +1,5 @@
 github "Alamofire/Alamofire" "1.2.1"
 github "robrix/Box" "1.2.2"
+github "rs/SDWebImage" "a51688168de484512ab6f75f313d619ba0631d83"
 github "antitypical/Result" "0.4.1"
 github "ReactiveCocoa/ReactiveCocoa" "v3.0-beta.4"
