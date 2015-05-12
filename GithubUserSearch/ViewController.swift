@@ -8,6 +8,8 @@
 
 import UIKit
 import ReactiveCocoa
+import WebImage
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     static let REUSE_ID = "user_cell"
@@ -70,36 +72,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(ViewController.REUSE_ID) as! UserCell
         
-        cell.imageView?.image = defaultProfileImage
         if let user = viewModel.users?[indexPath.item] {
-            if let disposable = cell.imageLoading {
-                disposable.dispose()
-            }
-            
             cell.userNameLabel.text = user.login
             let url = NSURL(string: user.avatar_url)
-            
-            cell.imageLoading = signalForImage(url!)
-            |> startOn(QueueScheduler())
-            |> observeOn(UIScheduler())
-            |> start
-            {
-                cell.imageView?.image = $0
-            }
+            cell.imageView?.sd_setImageWithURL(url, placeholderImage: defaultProfileImage)
         }
         
         return cell
-    }
-    
-    func signalForImage(url: NSURL) -> SignalProducer<UIImage, NoError> {
-        return SignalProducer<UIImage, NoError> {
-            observer, disposable in
-            if let imgData = NSData(contentsOfURL: url) {
-                sendNext(observer, UIImage(data: imgData)!)
-            }
-            sendCompleted(observer)
-            return
-        }
     }
 }
 

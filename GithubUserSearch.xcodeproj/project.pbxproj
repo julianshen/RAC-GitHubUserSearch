@@ -12,6 +12,8 @@
 		A07381AF1AFDA427003DAA31 /* GitHubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07381AE1AFDA427003DAA31 /* GitHubClient.swift */; };
 		A07381B11AFDA433003DAA31 /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07381B01AFDA433003DAA31 /* UserSearchViewModel.swift */; };
 		A07381B31AFDA43B003DAA31 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07381B21AFDA43B003DAA31 /* User.swift */; };
+		B959691C1B0215D700ACB200 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B959691B1B0215D700ACB200 /* WebImage.framework */; };
+		B959691D1B0215D700ACB200 /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B959691B1B0215D700ACB200 /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B9F260281AFB2EAC00338F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F260271AFB2EAC00338F3F /* AppDelegate.swift */; };
 		B9F2602A1AFB2EAC00338F3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F260291AFB2EAC00338F3F /* ViewController.swift */; };
 		B9F2602D1AFB2EAC00338F3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9F2602B1AFB2EAC00338F3F /* Main.storyboard */; };
@@ -46,6 +48,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B9F2604D1AFB305F00338F3F /* ReactiveCocoa.framework in Embed Frameworks */,
+				B959691D1B0215D700ACB200 /* WebImage.framework in Embed Frameworks */,
 				B9F260511AFB305F00338F3F /* Box.framework in Embed Frameworks */,
 				B9F2604F1AFB305F00338F3F /* Result.framework in Embed Frameworks */,
 				A07381AA1AFDA37E003DAA31 /* Alamofire.framework in Embed Frameworks */,
@@ -60,6 +63,7 @@
 		A07381AE1AFDA427003DAA31 /* GitHubClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubClient.swift; sourceTree = "<group>"; };
 		A07381B01AFDA433003DAA31 /* UserSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
 		A07381B21AFDA43B003DAA31 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B959691B1B0215D700ACB200 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		B9F260221AFB2EAC00338F3F /* GithubUserSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubUserSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F260261AFB2EAC00338F3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9F260271AFB2EAC00338F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9F2604C1AFB305F00338F3F /* ReactiveCocoa.framework in Frameworks */,
+				B959691C1B0215D700ACB200 /* WebImage.framework in Frameworks */,
 				B9F260501AFB305F00338F3F /* Box.framework in Frameworks */,
 				B9F2604E1AFB305F00338F3F /* Result.framework in Frameworks */,
 				A07381A91AFDA37E003DAA31 /* Alamofire.framework in Frameworks */,
@@ -126,6 +131,7 @@
 		B9F260191AFB2EAC00338F3F = {
 			isa = PBXGroup;
 			children = (
+				B959691B1B0215D700ACB200 /* WebImage.framework */,
 				A07381A81AFDA37E003DAA31 /* Alamofire.framework */,
 				B9F260491AFB305F00338F3F /* ReactiveCocoa.framework */,
 				B9F2604A1AFB305F00338F3F /* Result.framework */,

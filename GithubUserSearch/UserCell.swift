@@ -12,6 +12,4 @@ import ReactiveCocoa
 class UserCell:UITableViewCell {
     @IBOutlet weak var avatarImageView:UIImageView!
     @IBOutlet weak var userNameLabel:UILabel!
-    
-    var imageLoading: Disposable?
 }
