@@ -84,9 +84,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             |> observeOn(UIScheduler())
             |> start
             {
-                value in
-                cell.imageView?.image = value
-                return
+                cell.imageView?.image = $0
             }
         }
         
